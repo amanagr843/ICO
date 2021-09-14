@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EagleAnt ICO</title>
+
+    <!-- bootstrap css file -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"/>
+
+      <!-- css file -->
+    <link rel="stylesheet" href="index.css" />
+
+    <!-- font-awesome file -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js" integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  </head>
+  <body>
+
+    <div class="box">
+      
+      <div id="name1">
+        <h1><span style="font-family: Strasua;">EAGLEANT</span><br> <span>Decentralised</span> <br>Video Rendering</h1>
+        
+        <div class="socialmedia">
+          <a href="https://t.me/anteagle" target="blank"><i class="fab fa-telegram"></i></a>
+          <a href="https://twitter.com/anteagle_" target="blank"><i class="fab fa-twitter"></i></a>
+
+        </div>
+      
+      </div>
+      
+      <div id="name2">
+        <h1>Public Sale <br><span class="light neonText">is Live</span></h1>
+        <div class="data">
+              <span id="day">hello</span>
+              <span id="hour">hello</span>
+              <span id="minute">hello</span>
+              <span id="second">hello</span>
+          </div>
+          <!-- <button class="btn"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">Buy EagleAnt Now</button> -->
+
+          <!-- modal primary -->
+		  <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+			<div class="modal-dialog modal-dialog-centered">
+			  <div class="modal-content" style="background-color: black; box-shadow: 0 0 3px silver;">
+				<div class="modal-header">
+				  <h5 class="modal-title" id="exampleModalToggleLabel">Details</h5>
+				  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+				  <p class="modal_heading1">EagleAnt contract Address:- </h1>
+				  <p class="text-center address" >0x60d7284eE45307013d40Bce50C3Bc85DF3<br/>3928b2</p>
+				  <p class="text-center model_add">Alert⚠</p>
+				  <p class="model_alert">Please click the Add Token below to add EAGANT token to your wallet.</p>
+				</div>
+				<div class="modal-footer" id="modal-footer">
+				  <button class="modalbtn1" onclick="addtoken()" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Add Token</button>
+				</div>
+			  </div>
+			</div>
+		  </div>
+		  <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+			<div class="modal-dialog modal-dialog-centered">
+			  <div class="modal-content" style="background-color: black; box-shadow:  0 0 4px silver;">
+				<div class="modal-header">
+				  <h5 class="modal-title display-6" id="exampleModalToggleLabel2">Buy EagleAnt</h5>
+				  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+				  
+					  <form class="container mx-auto" id="form_to_hide">
+						<div class="mb-3" id="mb-3">
+						  <label for="name" class="form-label">Name</label>
+	
+						  <input type="text" class="form-control" id="name" placeholder="Enter Your Name" >
+						  <label for="email" class="form-label mt-3">E-mail</label>
+	
+						  <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Your E-mail">
+						  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+						</div>
+						<div class="mb-3" id="mb-3">
+						  <label for="tele" class="form-label">Telegram Id</label>
+						  <input type="text" class="form-control" id="tele" placeholder="Enter your telegram id">
+						</div>
+						<div class="mb-3" id="mb-3">
+						  <label for="token" class="form-label">Number of tokens you want to buy</label>
+						  <input type="number" class="form-control" id="token" placeholder="Number of tokens" onchange="dataEntered()">
+						  <div id="emailHelp" class="form-text" style="color:#0fa">*  1 EAGANT = 0.05 USD</div>
+						</div>
+						<div class="mb-3" id="mb-3">
+						  <label for="bnb" class="form-label">Total BNB</label>
+						  <input type="number" class="form-control" id="bnb" placeholder="Total BNB" disabled style="color: black;">
+						</div>
+					 
+					  </form>
+					<!-- modal form  end-->
+					
+				</div>
+				<div class="modal-footer" id="modal-footer1">
+					<input type="submit" class="modalbtn1" value="Submit" onclick="submit()" />
+				  <button class="modalbtn1" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
+				</div>
+				<div class="content" id="loading" style="display: none;">
+					<div class="planet">
+					   <div class="ring"></div>
+						  <div class="cover-ring"></div>
+					   <div class="spots">
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <span></span>
+						  <span></span>
+				 
+					   </div>
+					</div>
+					<p>loading</p>
+				 </div>
+
+			  </div>
+			</div>
+		  </div>
+		  <a class="btn" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Buy EagleAnt Now</a>
+          <!-- modal end -->
+          </div>   
+      </div>
+
+      
+    </div>
+    
+    <h1 class="msg">Hurry Up <span> 20% Bonus</span> Live</h1>
+    <h2 class="msg2">--Payment Method--</h2>
+    
+    <div class="btns">
+      <div class="btn2">BNB</div>
+      </div>
+      
+      <div class="fxdbutton">
+        <button onclick="javascript:window.location = 'https://t.me/anteagle'">Join Our Telegram Page &nbsp;<i class="fab fa-telegram-plane"></i></button>
+      </div>
+      
+      <script>
+        if(screen.width <= 600){
+	window.location = "mobile.html"
+}
+async function loadWeb3() {
+    if (window.ethereum) {
+        window.web3 = new Web3(window.ethereum);
+        window.ethereum.enable();
+    }
+    else{
+    //   new Swal("Unable to load!!","Please donwload metmask plugin for your browser and then continue","warning")
+	Swal.fire({
+  title: 'Unable to load!!',
+  text: "Please donwload metmask plugin for your browser and then continue",
+  icon: 'warning',
+  showCancelButton: false,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Download Metmask',
+  allowOutsideClick: false
+}).then((result) => {
+  if (result.isConfirmed) {
+    window.location.href = 'https://metamask.io/download'
+  }
+})
+}
+}
+
+
+async function loadContract() {
+	return await new window.web3.eth.Contract([
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "tokenbalance",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "initialized",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "isActive",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "initialTokens",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "tokensAvailable",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "RATE",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "goalReached",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "initialize",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "owner",
+		"outputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "START",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "DAYS",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "raisedAmount",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "buyTokens",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "CAP",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "newOwner",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"name": "_tokenAddr",
+				"type": "address"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "fallback"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"name": "to",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "BoughtTokens",
+		"type": "event"
+	}
+],'0x8240039611ffd6b2a6f51CE1B5afa2c0f2aC2279')
+}
+
+async function load() {
+    await loadWeb3();
+	window.contract = await loadContract();
+    updateStatus('Ready!');
+}
+
+function updateStatus(status) {
+    console.log(status);
+}
+async function getCurrentAccount() {
+            const accounts = await window.web3.eth.getAccounts();
+            return accounts[0];
+        }
+async function addtoken() {
+	document.getElementById("loading").style.display = 'block'
+    document.getElementById("loading").style.marginLeft = '8rem'
+    document.getElementById("form_to_hide").style.display = 'none'
+    document.getElementById("modal-footer").style.display = 'none'
+    document.getElementById("modal-footer1").style.display = 'none'
+	const temp = await ethereum.request({
+			method: 'wallet_watchAsset',
+    params: {
+      type: 'ERC20', // Initially only supports ERC20, but eventually more!
+      options: {
+        address: '0x60d7284eE45307013d40Bce50C3Bc85DF33928b2', // The address that the token is at.
+        symbol: 'MYEAGLE', // A ticker symbol or shorthand, up to 5 chars.
+        decimals: 18, // The number of decimals in the token
+        image: 'http://placekitten.com/200/300', // A string url of the token logo
+      },
+    },
+		})
+	    document.getElementById("loading").style.display = 'none'
+    document.getElementById("loading").style.marginLeft = '8rem'
+    document.getElementById("form_to_hide").style.display = 'block'
+    document.getElementById("modal-footer").style.display = 'block'
+    document.getElementById("modal-footer1").style.display = 'block'
+    }
+
+load();
+     let destTime = new Date("oct 15, 2021 10:00:00").getTime();    //launch time in milliseconds
+
+    var x = setInterval(function(){
+    let currTime = new Date().getTime();   //current time in milliseconds
+
+    let diffTime = destTime - currTime;   //diffrence of both the time in milliseconds
+
+    let days = Math.floor(diffTime/(24*60*60*1000));
+    let hours = Math.floor((diffTime % (24*60*60*1000)) / (60*60*1000));
+    let minutes = Math.floor(diffTime %(60*60*1000)/(60*1000));
+    let seconds = Math.floor((diffTime%(60*1000)/1000));
+
+    document.getElementById("day").innerHTML = days + " days";
+    document.getElementById("hour").innerHTML = hours + " hr";
+    document.getElementById("minute").innerHTML = minutes + " min";
+    document.getElementById("second").innerHTML = seconds + " sec";
+    } , 1000);
+    function dataEntered(){
+      const h = document.getElementById("token").value
+      document.getElementById("bnb").value = h*0.00013
+    }
+  async function submit(){
+    
+    document.getElementById("loading").style.display = 'block'
+    document.getElementById("loading").style.marginLeft = '8rem'
+    document.getElementById("form_to_hide").style.display = 'none'
+    document.getElementById("modal-footer").style.display = 'none'
+    document.getElementById("modal-footer1").style.display = 'none'
+
+      const name = document.getElementById("name").value
+      const email = document.getElementById("email").value
+      const telegram = document.getElementById("tele").value
+      const tokens = document.getElementById("token").value
+      const account = await getCurrentAccount();
+      const bnb_to_send = document.getElementById("bnb").value*1000000000000000000
+      axios({
+        method : "get",
+        url : `https://api.anteagle.tech/ico_database?name=${name}&email=${email}&telegram=${telegram}&tokens=${tokens}&account=${account}`
+      }).then(res=>{
+        // console.log(res)
+    // document.getElementById("loading").style.display = 'none'
+
+        if(res.data.success){
+      contract.methods.buyTokens().send({
+		  from : account,
+		  value : bnb_to_send
+	  }).then(async(res)=>{
+      if(contract.events.BoughtTokens()){
+    	await new Swal("Success",`Congratulation you have successfully bought ${tokens} EAGANT`,"success")
+        window.location.reload()
+      }
+      
+    })
+
+
+        }
+      })
+    }
+
+  
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+ integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+  crossorigin="anonymous">
+</script>
+
+  </body>
+  </html>
+  
