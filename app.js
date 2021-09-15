@@ -288,8 +288,8 @@ async function addtoken() {
     params: {
       type: 'ERC20', // Initially only supports ERC20, but eventually more!
       options: {
-        address: '0x60d7284eE45307013d40Bce50C3Bc85DF33928b2', // The address that the token is at.
-        symbol: 'MYEAGLE', // A ticker symbol or shorthand, up to 5 chars.
+        address: '0xd2a307f1178359FB00A781529bb513F26647aEd6', // The address that the token is at.
+        symbol: 'EAGLEANT', // A ticker symbol or shorthand, up to 5 chars.
         decimals: 18, // The number of decimals in the token
         image: 'https://iili.io/RgXcv4.png', // A string url of the token logo
       },
