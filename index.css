@@ -36,6 +36,10 @@ body {
   letter-spacing: 1px;
   text-align: center;
 }
+.more:hover{
+text-decoration:underline;
+cursor: pointer;
+}
 .modalbtn1 {
   color: #0fa;
   line-height: 12px;
