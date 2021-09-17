@@ -283,7 +283,21 @@ async function addtoken() {
     document.getElementById("form_to_hide").style.display = 'none'
     document.getElementById("modal-footer").style.display = 'none'
     document.getElementById("modal-footer1").style.display = 'none'
-	const temp = await ethereum.request({
+	await ethereum.request({
+		method: 'wallet_addEthereumChain',
+params: [{
+chainId: '0x38',
+chainName: 'Binance Smart Chain',
+nativeCurrency: {
+    name: 'Binance Coin',
+    symbol: 'BNB',
+    decimals: 18
+},
+rpcUrls: ['https://bsc-dataseed.binance.org/'],
+blockExplorerUrls: ['https://bscscan.com']
+}]
+	})		
+await ethereum.request({
 			method: 'wallet_watchAsset',
     params: {
       type: 'ERC20', // Initially only supports ERC20, but eventually more!
